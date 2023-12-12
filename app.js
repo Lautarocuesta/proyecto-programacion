@@ -2,11 +2,15 @@
 const express = require('express');
 const ViteExpress = require ('vite-express');
 const bodyParser = require('body-parser');
+const ejs = require('ejs');
 // puerto 3000
 const port = 3000
 // nombre para arracancar el proyecto app
 const app = express();
 app.use(bodyParser.json());
+
+// Configuro EJS como el motor de plantillas
+app.set('view engine', 'ejs');
 
 //app es una instancia de express.
 //METHOD es un método de solicitud HTTP.
@@ -15,7 +19,7 @@ app.use(bodyParser.json());
 //proyecto con el metodo http con un metodo get con un model cliente servidor
 // envaindo una hello word al proyecto
 app.get('/', (req, res) => {
-  res.send('Hello World')
+  res.render('Hello World')
 })
 //
 app.post('/', (req, res) => {
