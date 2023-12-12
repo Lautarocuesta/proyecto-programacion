@@ -1,10 +1,12 @@
 //definiendo el lugar de trabajo de express con el require
-const express = require('express')
-const ViteExpress = require ("vite-express")
-// nombre para arracancar el proyecto app
-const app = express();
+const express = require('express');
+const ViteExpress = require ('vite-express');
+const bodyParser = require('body-parser');
 // puerto 3000
 const port = 3000
+// nombre para arracancar el proyecto app
+const app = express();
+app.use(bodyParser.json());
 
 //app es una instancia de express.
 //METHOD es un método de solicitud HTTP.
@@ -15,6 +17,16 @@ const port = 3000
 app.get('/', (req, res) => {
   res.send('Hello World')
 })
+//
+app.post('/', (req, res) => {
+  res.send('Hola - POST');
+});
+app.put('/', (req, res) => {
+  res.send('Hola - PUT');
+});
+app.delete('/', (req, res) => {
+  res.send('Hello, World! - DELETE');
+});
 
 //enlazar y escuchar conexiones en un host y puerto específicos.
 app.listen(port, () => {
