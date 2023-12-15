@@ -7,6 +7,14 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: [true, "Un post debe tener un título"],
     },
+    id :{
+        type:Number,
+            required:  [true, "Un post debe tener un id"],    
+        },
+   // age :{
+       // type:Number,
+       // required:  [true],    
+       // },
     description: {
         type: String,
         required: [true, "Un post debe tener una descripción"],

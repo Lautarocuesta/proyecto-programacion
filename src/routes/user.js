@@ -25,8 +25,9 @@ router.get("/users", (req, res) => {
 // get a user
 router.get("/users/:id", (req, res) => {
   const { id } = req.params;
+  const {title,description} = req.body;
   userSchema
-    .findById(id)
+    .updateOne({_id: id},{title,description})
     .then((data) => res.render("index",{data:data}))
     .catch((error) => res.json({ message: error }));
 });
@@ -35,7 +36,7 @@ router.get("/users/:id", (req, res) => {
 router.delete("/users/:id", (req, res) => {
   const { id } = req.params;
   userSchema
-    .remove({ _id: id })
+    .deleteByid({ _id: id })
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });

@@ -22,6 +22,7 @@ app.get("/", (req, res) => {
 app.use("/api", userRoutes);
 
 
+
 //mongodb connection
   mongoose
 .connect(process.env.MONGODB_URI)
