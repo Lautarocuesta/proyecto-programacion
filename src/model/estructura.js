@@ -7,7 +7,7 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: [true, "Un post debe tener un título"],
     },
-    id :{
+    id :{ //Id no tan necesario, mongoDB agrega por default '_id'
         type:Number,
             required:  [true, "Un post debe tener un id"],    
         },

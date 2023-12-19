@@ -25,9 +25,8 @@ router.get("/users", (req, res) => {
 // get a user
 router.get("/users/:id", (req, res) => {
   const { id } = req.params;
-  const {title,description} = req.body;
   userSchema
-    .updateOne({_id: id},{title,description})
+    .findById(id)
     .then((data) => res.render("index",{data:data}))
     .catch((error) => res.json({ message: error }));
 });
@@ -36,17 +35,17 @@ router.get("/users/:id", (req, res) => {
 router.delete("/users/:id", (req, res) => {
   const { id } = req.params;
   userSchema
-    .deleteByid({ _id: id })
+    .deleteOne({_id: id})
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
 
 // update a user
-router.put("/users/:id", (req, res) => {
-  const { id } = req.params;
-  const { name, age, email } = req.body;
+router.put("/users/:idUser", (req, res) => {
+  const { idUser } = req.params;
+  const { title, id, description } = req.body;
   userSchema
-    .updateOne({ _id: id }, { $set: { name, age, email } })
+    .updateOne({ _id: idUser }, { $set: { title, id, description } })
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
